@@ -17,9 +17,6 @@ def about (request):
     context_dict ={}
     return render(request,'books/about.html', context_dict)
 
-def show_book (request, book_name_slug):
-    context_dict = {}
-
     try:
         book = Book.objects.get(slug=book_name_slug)
         context_dict['book'] = book
@@ -92,7 +89,7 @@ def user_logout(request):
     logout(request)
     return redirect(reverse('books:home'))
 
-@login_requiered
+@login_required
 def view_account(request):
     context_dict = {'no_reviews':UserProfile.no_reviews,
                     'name':UserProfile.user.username}
@@ -111,7 +108,7 @@ def add_book(request):
         else:
             print(form.errors)
 
-    return render(request, 'books/add_Book.html', {'form':form})
+    return render(request, 'books/add_book.html', {'form':form})
 
 @login_required
 def add_review(request):
