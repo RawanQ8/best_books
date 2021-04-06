@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from books.models import Book, Review, UserProfile
 from books.forms import BookForm, UserForm, UserProfileForm, ReviewForm
 
@@ -19,17 +20,19 @@ def about (request):
 
 def show_book (request, book_name_slug):
     context_dict = {}
-
+    reviews = Review.objects.filter(book=book_name_slug)
     try:
         book = Book.objects.get(slug=book_name_slug)
         context_dict['book'] = book
+        context_dict['reviews'] = reviews
+
     except Book.DoesNotExist:
         context_dict['book'] = None
-
+        context_dict['reviews'] = None
     return render(request, 'books/book.html', context=context_dict)
 
 def book_list(request):
-    all_books = Book.objects
+    all_books = Book.objects.all()
     context_dict={'books':all_books}
 
     return render(request,'books/allBooks.html', context=context_dict)
@@ -92,7 +95,7 @@ def user_logout(request):
     logout(request)
     return redirect(reverse('books:home'))
 
-@login_requiered
+@login_required
 def view_account(request):
     context_dict = {'no_reviews':UserProfile.no_reviews,
                     'name':UserProfile.user.username}
@@ -114,16 +117,28 @@ def add_book(request):
     return render(request, 'books/add_Book.html', {'form':form})
 
 @login_required
-def add_review(request):
-    form = ReviewForm()
+def add_review(request, book):
 
+    form = ReviewForm()
+    reviewBook = Book.objects.get(title=book)
     if request.method == 'POST':
         form = ReviewForm(request.POST)
 
         if form.isValid():
-            form.save(commit=True)
-            return redirect(reverse('books:home'))
+            data = form.save(commit=True)
+            data.comment = request.POST['comment']
+            data.rating = request.POST['rating']
+            data.user = request.user
+            data.book = book
+            data.save()
+            return redirect(reverse('books:allBooks:<data.book.slug>'))
         else:
             print(form.errors)
 
     return render(request, 'books/add_review.html', {'form':form})
+
+# def getAvgRating(book):
+#     totalRating = 0
+#     reviews[] = Review.objects.all()
+#     for r in reviews:
+#         totalRating += r.rating
