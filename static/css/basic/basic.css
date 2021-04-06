@@ -2,6 +2,8 @@ body {
 	font-family: 'Calibri';
 	font-weight: 300;
 	background-color: #F9F9F9;
+	margin: 0;
+	padding: 0;
 }
 
 h1 {
@@ -11,21 +13,30 @@ h1 {
 	line-height: 18px;
 }
 
+header {
+	height: 130px;
+	width: 98.9vw;
+}
+
 .logo {
 	width: 100%;
 	position:center;
+	text-align: center;
 	border-bottom:solid 1px #808080;
-	margin-bottom: 5%;
 }
 
 .nav {
 	border-bottom: solid #555 3px;
+	padding-bottom:1px;
+	background-color: #F9F9F9;
 }
 
 .sticky {
 	top: 0px;
-	width: 100%;
+	width: 98.9vw;
 	position: fixed;
+	height: 38px;
+	border-spacing: 1px;
 }
 
 .nav ul {
@@ -37,8 +48,8 @@ h1 {
 
 .nav li a {
 	color: #000;
-	padding: 10px 18px;
 	text-decoration: none;
+	padding: 11px 18px;
 	float: left;
 }
 
