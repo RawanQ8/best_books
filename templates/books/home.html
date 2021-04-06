@@ -1,26 +1,12 @@
-<!DOCTYPE html>
+{% extends "books/base.html" %}
 {% load staticfiles %}
-<html>
-
-<head>
-    <LINK href="{% static 'css/basic/basic.css' %}" rel="stylesheet" title="basicstyle" type="text/css" />
-    <title> Best Books </title>
-</head>
-
-<body>
-    <div>
-        <img src="{% static 'images/title_logo.png' %}" alt="Best Books" />
-    </div>
-    <h1> Home </h1>
-    <div>
-        This is the hompage {{ boldmessage }}
-    </div>
-    <div>
-        <a href='/books/about'> About </a><br />
-    </div>
-</body>
 
 
+{% block title %} Best Books {% endblock %}
 
-
-</html>
+{% block body %}
+<h1> Home </h1>
+<div>
+    This is the hompage {{ boldmessage }}
+</div>
+{% endblock %}

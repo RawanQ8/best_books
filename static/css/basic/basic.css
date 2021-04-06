@@ -1,7 +1,7 @@
 body {
 	font-family: 'Calibri';
 	font-weight: 300;
-	background-color: #FBF9F7;
+	background-color: #F9F9F9;
 }
 
 h1 {
@@ -9,4 +9,49 @@ h1 {
 	font-weight: 400;
 	font-size: 36px;
 	line-height: 18px;
+}
+
+.logo {
+	width: 100%;
+	position:center;
+	border-bottom:solid 1px #808080;
+	margin-bottom: 5%;
+}
+
+.nav {
+	border-bottom: solid #555 3px;
+}
+
+.sticky {
+	top: 0px;
+	width: 100%;
+	position: fixed;
+}
+
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.nav li a {
+	color: #000;
+	padding: 10px 18px;
+	text-decoration: none;
+	float: left;
+}
+
+.nav .login {
+	float: right;
+}
+
+.nav li :not(.active):hover {
+	background-color: #A1465A;
+	color: white;
+}
+
+.nav li .active {
+	background-color: #555;
+	color: white;
 }
