@@ -20,7 +20,11 @@ def about (request):
 
 def show_book (request, book_name_slug):
     context_dict = {}
-    reviews = Review.objects.filter(book=book_name_slug)
+    current_book = Book.objects.get(title=book_name_slug)
+    reviews = Review.objects.filter(book=current_book).order_by("-comment")
+
+    average = reviews.aggregate(Avg("rating"))["rating"]
+    current_book.average_rating = round(average,2)
     try:
         book = Book.objects.get(slug=book_name_slug)
         context_dict['book'] = book

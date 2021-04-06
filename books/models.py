@@ -11,7 +11,7 @@ class Book (models.Model):
     avg_rating = models.DecimalField(max_digits=3, decimal_places=2)
     #url = models.URLField(unique=True)
     cover = models.ImageField(upload_to='covers', blank=True)
-    authors = models.CharField(max_length=256)
+    author = models.CharField(max_length=256)
     user = models.CharField(max_length=128)
     slug = models.SlugField(unique=True)
 
