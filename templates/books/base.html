@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="/books" {% if request.path == '/books/' %} class="active" {% endif %}>Home</a></li>
                 <li><a href="/books/submit-book" {% if request.path == '/books/submit-book/' %} class="active" {% endif %}>Submit Book</a></li>
-                <li><a href="/books/search" {% if request.path == '/books/search/' %} class="active" {% endif %}>Search Books</a></li>
+                <li><a href="/books/all-books" {% if request.path == '/books/all-books/' %} class="active" {% endif %}>Browse Books</a></li>
                 <li><a href="/books/about/" {% if request.path == '/books/about/' %} class="active" {% endif %}>About Us</a></li>
                 <li><a href="/books/sign-up" class="login{% if request.path == '/books/sign-up/' %} active{% endif %}">Sign Up</a></li>
                 <li><a href="/books/log-in" class="login{% if request.path == '/books/log-in/' %} active{% endif %}">Log In</a></li>
