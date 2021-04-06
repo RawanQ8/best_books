@@ -1,0 +1,29 @@
+form {
+    text-align: center;
+}
+
+.submit {
+    background-color: #555;
+    color: white;
+    padding: 3px;
+    width: 100px;
+    margin: 5px;
+}
+
+.formentry {
+    padding: 4px;
+}
+
+.formtext {
+    float: left;
+    margin-right: 40px;
+}
+
+.formfield:not(#id_cover) {
+    float: right;
+}
+
+#id_cover {
+    position: absolute;
+    margin-left: 20px;
+}

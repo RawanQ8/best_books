@@ -6,6 +6,13 @@ body {
 	padding: 0;
 }
 
+content {
+	position: absolute;
+	margin: 4px 7px 2px 4px;
+	padding: 4px 7px 2px 4px;
+	left: 8px;
+}
+
 h1 {
 	font-family: 'Yu Mincho';
 	font-weight: 400;

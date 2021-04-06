@@ -12,12 +12,22 @@
     <div>
         <form id="book_form" method="post" action="{% url 'books:add_book' %}">
             {% csrf_token %}
-            {% for field in form.fields %}
-                {{field.errors}}
-                {{field.help_text}}
-                {{field}}
+            {% for field in form.hidden_fields %}
+                {{hidden}}
             {% endfor %}
-            <input type="submit" name="submit" value="Submit Book" />
-        </form>
+            {% for field in form.visible_fields %}
+            <div class="formentry">
+                <div class="formtext">
+                    {{field.errors}}
+                    {{field.help_text}}
+                </div>
+                <div class="formfield">
+                    {{field}}
+                </div>
+            </div>
+            <br />
+                {% endfor %}
+                <input type="submit" name="submit" class="submit" value="Submit Book" />
+</form>
     </div>
 {% endblock %}

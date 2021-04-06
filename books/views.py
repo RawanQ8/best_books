@@ -101,7 +101,7 @@ def view_account(request):
                     'name':UserProfile.user.username}
 
 
-@login_required
+#@login_required
 def add_book(request):
     form = BookForm()
 
