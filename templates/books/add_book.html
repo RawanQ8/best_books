@@ -1,2 +1,23 @@
 {% extends "books/base.html" %}
+{% load staticfiles %}
 
+{% block style %}
+    <LINK href="{% static 'css/basic/form.css' %}" rel="stylesheet" title="basicstyle" type="text/css" /> 
+{% endblock %}
+
+{% block title %}Submit New Book{% endblock %}
+
+{% block body %}
+    <h1>Submit New Book</h1>
+    <div>
+        <form id="book_form" method="post" action="{% url 'books:add_book' %}">
+            {% csrf_token %}
+            {% for field in form.fields %}
+                {{field.errors}}
+                {{field.help_text}}
+                {{field}}
+            {% endfor %}
+            <input type="submit" name="submit" value="Submit Book" />
+        </form>
+    </div>
+{% endblock %}
