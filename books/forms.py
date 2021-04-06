@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from books.models import Book, Review, Author, UserProfile
+from books.models import *
 
 
 class BookForm(forms.ModelForm):

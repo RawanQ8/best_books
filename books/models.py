@@ -43,9 +43,9 @@ class Review(models.Model):
     def __str__(self):
         return self.user.username
 
-class Author(models.Model):
-    name = models.CharField(max_length=128, unique =True)
-    books = models.ManyToManyField(Book)
-
-    def __str__(self):
-        return self.name
+# class Author(models.Model):
+#     name = models.CharField(max_length=128, unique =True)
+#     books = models.ManyToManyField(Book)
+#
+#     def __str__(self):
+#         return self.name
